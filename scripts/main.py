@@ -2,12 +2,13 @@ import discord
 from discord.ext import commands
 import os
 from dotenv import load_dotenv
+import mcrcon
 
 
 load_dotenv()
 
 client = discord.Client()
-bot = commands.Bot(command_prefix=">run ")
+bot = commands.Bot(command_prefix="mc ")
 bot.remove_command("help")
 
 @bot.event
@@ -31,6 +32,19 @@ async def help(ctx):
 async def hi(ctx):
   await ctx.channel.send("Hello!")
   return
+
+@bot.command()
+async def exec(ctx,*,cmd):
+
+
+  if cmd == None:
+    await ctx.send("Invalid command")
+  else:
+    mcr = mcrcon.MCRcon(os.getenv('host'),os.getenv('pass'))
+    mcr.connect()
+    resp = mcr.command(cmd) 
+    await ctx.send(resp)
+    mcr.disconnect()
 
     
 @client.event
