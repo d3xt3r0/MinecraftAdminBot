@@ -24,6 +24,10 @@ pass="<your-minecraft-server-password-here>"
 python main.py
 ```
 
+## TODO
+
+- [ ] Add player count command
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
