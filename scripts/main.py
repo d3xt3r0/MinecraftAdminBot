@@ -42,6 +42,7 @@ async def exec(ctx,*,cmd):
   else:
     mcr = mcrcon.MCRcon(os.getenv('host'),os.getenv('pass'))
     mcr.connect()
+    print(os.getenv('host'))
     resp = mcr.command(cmd) 
     await ctx.send(resp)
     mcr.disconnect()
